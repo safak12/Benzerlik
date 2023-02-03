@@ -228,6 +228,7 @@ namespace Benzerlik
                             result.Add(Check);
 
 
+
                         }
 
                     }
