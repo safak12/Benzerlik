@@ -66,7 +66,7 @@ namespace Benzerlik
                 Record.deliveryRecords.Add(record);
             }
 
-            satirSayisi = Record.deliveryRecords.Count - 2196000;
+            satirSayisi = Record.deliveryRecords.Count; //- 2196000;
             this.textBox1.Text = satirSayisi.ToString();
 
 
@@ -564,6 +564,8 @@ namespace Benzerlik
             button5.Enabled = false;
 
         }
+
+       
     }
 }
 

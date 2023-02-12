@@ -58,6 +58,9 @@ namespace Benzerlik
             this.label14 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -72,7 +75,7 @@ namespace Benzerlik
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(177, 44);
+            this.textBox1.Location = new System.Drawing.Point(481, 24);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(136, 22);
             this.textBox1.TabIndex = 1;
@@ -131,7 +134,7 @@ namespace Benzerlik
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(43, 43);
+            this.label3.Location = new System.Drawing.Point(375, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 11;
@@ -291,7 +294,7 @@ namespace Benzerlik
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(526, 153);
+            this.label14.Location = new System.Drawing.Point(601, 122);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(222, 17);
             this.label14.TabIndex = 43;
@@ -299,7 +302,7 @@ namespace Benzerlik
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(754, 148);
+            this.textBox12.Location = new System.Drawing.Point(829, 122);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(162, 22);
             this.textBox12.TabIndex = 42;
@@ -311,11 +314,41 @@ namespace Benzerlik
             this.textBox13.Size = new System.Drawing.Size(162, 22);
             this.textBox13.TabIndex = 44;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(873, 208);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 17);
+            this.label10.TabIndex = 45;
+            this.label10.Text = "Seneryo 1";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(510, 208);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(73, 17);
+            this.label13.TabIndex = 46;
+            this.label13.Text = "Seneryo 2";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(106, 208);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 17);
+            this.label15.TabIndex = 47;
+            this.label15.Text = "Seneryo 3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1112, 545);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox13);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox12);
@@ -384,6 +417,9 @@ namespace Benzerlik
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label15;
     }
 }
 
