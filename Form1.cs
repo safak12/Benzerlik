@@ -17,25 +17,25 @@ namespace Benzerlik
     public partial class Form1 : Form
     {
 
-        public static int satirSayisi;
+        public static int lineCount;
         public static bool flag = false;
         public static bool flag2 = false;
         public static bool flag3 = false;
-        public static int sayac = 0;
-        public static int sayac1 = 0;
-        public static string gelen;
-        public static string productİsim;
-        public static List<string> companyİsimler = new List<string>();
+        public static int counter = 0;
+        public static int counter1 = 0;
+        public static string coming;
+        public static string productName;
+        public static List<string> companyNames = new List<string>();
         public static int payda;
         public static List<CheckModel> result;
         public static List<ThreadSure> sureler;
-        public static string Filtre;
+        public static string Filter;
         public static double threShold;
-        public static string comboDeger;
+        public static string comboValue;
         public static string compID;
-        public static string combo2Deger;
-        public static int dakika;
-        public static int saniye;
+        public static string combo2Value;
+        public static int minute;
+        public static int second;
         public static IEnumerable<string> record3Query;
 
         public Form1()
@@ -66,8 +66,8 @@ namespace Benzerlik
                 Record.deliveryRecords.Add(record);
             }
 
-            satirSayisi = Record.deliveryRecords.Count; //- 2196000;
-            this.textBox1.Text = satirSayisi.ToString();
+            lineCount = Record.deliveryRecords.Count; //- 2196000;
+            this.textBox1.Text = lineCount.ToString();
 
 
 
@@ -90,18 +90,18 @@ namespace Benzerlik
                 ThreadSure sure = new ThreadSure();
                 CheckModel Check = new CheckModel();
                 var a = DateTime.Now;
-                if (comboDeger == "Product")
+                if (comboValue == "Product")
                 {
-                    for (int i = 1; i < satirSayisi - 1; i++)
+                    for (int i = 1; i < lineCount - 1; i++)
                     {
-                        for (int j = i + 1 + (satirSayisi * (pay) / payda); j < (satirSayisi * (pay + 1) / payda); j++)
+                        for (int j = i + 1 + (lineCount * (pay) / payda); j < (lineCount * (pay + 1) / payda); j++)
                         {
 
-                            if (threShold <= algoritma(Record.deliveryRecords[i].Product, Record.deliveryRecords[j].Product))
+                            if (threShold <= algorithm(Record.deliveryRecords[i].Product, Record.deliveryRecords[j].Product))
                             {
                                 Check.record1 = Record.deliveryRecords[i].Product;
                                 Check.record2 = Record.deliveryRecords[j].Product;
-                                Check.Similarity = algoritma(Record.deliveryRecords[i].Product, Record.deliveryRecords[j].Product);
+                                Check.Similarity = algorithm(Record.deliveryRecords[i].Product, Record.deliveryRecords[j].Product);
                                 result.Add(Check);
 
 
@@ -110,18 +110,18 @@ namespace Benzerlik
                         }
                     }
                 }
-                else if (comboDeger == "Company")
+                else if (comboValue == "Company")
                 {
-                    for (int i = 1; i < satirSayisi - 1; i++)
+                    for (int i = 1; i < lineCount - 1; i++)
                     {
-                        for (int j = i + 1 + (satirSayisi * (pay) / payda); j < (satirSayisi * (pay + 1) / payda); j++)
+                        for (int j = i + 1 + (lineCount * (pay) / payda); j < (lineCount * (pay + 1) / payda); j++)
                         {
 
-                            if (threShold <= algoritma(Record.deliveryRecords[i].Company, Record.deliveryRecords[j].Company))
+                            if (threShold <= algorithm(Record.deliveryRecords[i].Company, Record.deliveryRecords[j].Company))
                             {
                                 Check.record1 = Record.deliveryRecords[i].Company;
                                 Check.record2 = Record.deliveryRecords[j].Company;
-                                Check.Similarity = algoritma(Record.deliveryRecords[i].Company, Record.deliveryRecords[j].Company);
+                                Check.Similarity = algorithm(Record.deliveryRecords[i].Company, Record.deliveryRecords[j].Company);
                                 result.Add(Check);
 
 
@@ -130,18 +130,18 @@ namespace Benzerlik
                         }
                     }
                 }
-                else if (comboDeger == "Issue")
+                else if (comboValue == "Issue")
                 {
-                    for (int i = 1; i < satirSayisi - 1; i++)
+                    for (int i = 1; i < lineCount - 1; i++)
                     {
-                        for (int j = i + 1 + (satirSayisi * (pay) / payda); j < (satirSayisi * (pay + 1) / payda); j++)
+                        for (int j = i + 1 + (lineCount * (pay) / payda); j < (lineCount * (pay + 1) / payda); j++)
                         {
 
-                            if (threShold <= algoritma(Record.deliveryRecords[i].Issue, Record.deliveryRecords[j].Issue))
+                            if (threShold <= algorithm(Record.deliveryRecords[i].Issue, Record.deliveryRecords[j].Issue))
                             {
                                 Check.record1 = Record.deliveryRecords[i].Issue;
                                 Check.record2 = Record.deliveryRecords[j].Issue;
-                                Check.Similarity = algoritma(Record.deliveryRecords[i].Issue, Record.deliveryRecords[j].Issue);
+                                Check.Similarity = algorithm(Record.deliveryRecords[i].Issue, Record.deliveryRecords[j].Issue);
                                 result.Add(Check);
 
 
@@ -153,8 +153,8 @@ namespace Benzerlik
 
                 var b = DateTime.Now;
                 sure.threadSure = (b.Minute - a.Minute).ToString() + "dk" + (b.Second - a.Second).ToString() + "sn";
-                dakika += b.Minute - a.Minute;
-                saniye += b.Second - a.Second;
+                minute += b.Minute - a.Minute;
+                second += b.Second - a.Second;
                 sure.threadID = payy.ToString();
                 sureler.Add(sure);
                 flag = true;
@@ -175,18 +175,18 @@ namespace Benzerlik
                 ThreadSure sure = new ThreadSure();
                 CheckModel Check = new CheckModel();
                 var a = DateTime.Now;
-                if (combo2Deger == "Product")
+                if (combo2Value == "Product")
                 {
 
 
-                    for (int j = 1 + (satirSayisi * (pay) / payda); j < (satirSayisi * (pay + 1) / payda); j++)
+                    for (int j = 1 + (lineCount * (pay) / payda); j < (lineCount * (pay + 1) / payda); j++)
                     {
 
-                        if (threShold <= algoritma(Filtre, Record.deliveryRecords[j].Product))
+                        if (threShold <= algorithm(Filter, Record.deliveryRecords[j].Product))
                         {
-                            Check.record1 = Filtre;
+                            Check.record1 = Filter;
                             Check.record2 = Record.deliveryRecords[j].Product;
-                            Check.Similarity = algoritma(Filtre, Record.deliveryRecords[j].Product);
+                            Check.Similarity = algorithm(Filter, Record.deliveryRecords[j].Product);
                             result.Add(Check);
 
 
@@ -195,17 +195,17 @@ namespace Benzerlik
                     }
 
                 }
-                else if (combo2Deger == "Company")
+                else if (combo2Value == "Company")
                 {
 
-                    for (int j = 1 + (satirSayisi * (pay) / payda); j < (satirSayisi * (pay + 1) / payda); j++)
+                    for (int j = 1 + (lineCount * (pay) / payda); j < (lineCount * (pay + 1) / payda); j++)
                     {
 
-                        if (threShold <= algoritma(Filtre, Record.deliveryRecords[j].Company))
+                        if (threShold <= algorithm(Filter, Record.deliveryRecords[j].Company))
                         {
-                            Check.record1 = Filtre;
+                            Check.record1 = Filter;
                             Check.record2 = Record.deliveryRecords[j].Company;
-                            Check.Similarity = algoritma(Filtre, Record.deliveryRecords[j].Company);
+                            Check.Similarity = algorithm(Filter, Record.deliveryRecords[j].Company);
                             result.Add(Check);
 
 
@@ -214,17 +214,17 @@ namespace Benzerlik
                     }
 
                 }
-                else if (combo2Deger == "Issue")
+                else if (combo2Value == "Issue")
                 {
 
-                    for (int j = 1 + (satirSayisi * (pay) / payda); j < (satirSayisi * (pay + 1) / payda); j++)
+                    for (int j = 1 + (lineCount * (pay) / payda); j < (lineCount * (pay + 1) / payda); j++)
                     {
 
-                        if (threShold <= algoritma(Filtre, Record.deliveryRecords[j].Issue))
+                        if (threShold <= algorithm(Filter, Record.deliveryRecords[j].Issue))
                         {
-                            Check.record1 = Filtre;
+                            Check.record1 = Filter;
                             Check.record2 = Record.deliveryRecords[j].Issue;
-                            Check.Similarity = algoritma(Filtre, Record.deliveryRecords[j].Issue);
+                            Check.Similarity = algorithm(Filter, Record.deliveryRecords[j].Issue);
                             result.Add(Check);
 
 
@@ -236,8 +236,8 @@ namespace Benzerlik
                 }
                 var b = DateTime.Now;
                 sure.threadSure = (b.Minute - a.Minute).ToString() + "dk" + (b.Second - a.Second).ToString() + "sn";
-                dakika += b.Minute - a.Minute;
-                saniye += b.Second - a.Second;
+                minute += b.Minute - a.Minute;
+                second += b.Second - a.Second;
                 sure.threadID = pay.ToString();
                 sureler.Add(sure);
                 flag = true;
@@ -253,13 +253,13 @@ namespace Benzerlik
                 CheckModel Check = new CheckModel();
                 var a = DateTime.Now;
 
-                for (int i = 1; i < satirSayisi - 1; i++)
+                for (int i = 1; i < lineCount - 1; i++)
                 {
                     
-                    for (int j = i + 1 + (satirSayisi * (pay) / payda); j < (satirSayisi * (pay + 1) / payda); j++)
+                    for (int j = i + 1 + (lineCount * (pay) / payda); j < (lineCount * (pay + 1) / payda); j++)
                     {
 
-                        if (threShold <= algoritma(Record.deliveryRecords1[i].Issue, Record.deliveryRecords1[j].Issue))
+                        if (threShold <= algorithm(Record.deliveryRecords1[i].Issue, Record.deliveryRecords1[j].Issue))
                         {
 
                            
@@ -270,7 +270,7 @@ namespace Benzerlik
 
                             foreach (var item in record3Query)
                             {
-                                    companyİsimler.Add(item);
+                                    companyNames.Add(item);
                             }
 
                             break;
@@ -286,8 +286,8 @@ namespace Benzerlik
 
                 var b = DateTime.Now;
                 sure.threadSure = (b.Minute - a.Minute).ToString() + "dk" + (b.Second - a.Second).ToString() + "sn";
-                dakika += b.Minute - a.Minute;
-                saniye += b.Second - a.Second;
+                minute += b.Minute - a.Minute;
+                second += b.Second - a.Second;
                 sure.threadID = pay.ToString();
                 sureler.Add(sure);
                 flag = true;
@@ -301,7 +301,7 @@ namespace Benzerlik
         {
             return Task.Run(() =>
             {
-                int gelmis = Convert.ToInt32(gelen);
+                int gelmis = Convert.ToInt32(coming);
                 payda = gelmis;
                 Thread[] thread = new Thread[gelmis];
                 var sure1 = DateTime.Now;
@@ -341,13 +341,13 @@ namespace Benzerlik
         private void button3_Click(object sender, EventArgs e)
         {
 
-            if (saniye > 60)
+            if (second > 60)
             {
 
-                dakika += saniye / 60;
-                saniye = saniye - (saniye / 60) * 60;
+                minute += second / 60;
+                second = second - (second / 60) * 60;
             }
-            this.textBox12.Text = dakika.ToString() + "dk" + saniye.ToString() + "sn";
+            this.textBox12.Text = minute.ToString() + "dk" + second.ToString() + "sn";
             if (flag == true)
             {
 
@@ -359,8 +359,8 @@ namespace Benzerlik
                 TextBox t2 = (TextBox)(f1.Controls["TextBox1"]);
                 if (flag3 == true)
                 {
-                    dw4.DataSource = companyİsimler.Select(x => new { Value = x }).ToList();
-                    t1.Text = companyİsimler.Count.ToString();
+                    dw4.DataSource = companyNames.Select(x => new { Value = x }).ToList();
+                    t1.Text = companyNames.Count.ToString();
                 }
                 else
                 {
@@ -446,12 +446,12 @@ namespace Benzerlik
             }
             return count;
         }
-        public static double algoritma(string kaynak, string hedef)
+        public static double algorithm(string kaynak, string hedef)
         {
             string[] cumleler = new string[100];
             string[] cumleler2 = new string[100];
             double ck = 0;
-            double sayac = 0;
+            double counter = 0;
             double buyuk = 0;
 
 
@@ -470,12 +470,12 @@ namespace Benzerlik
                 {
                     if (cumleler[i].Equals(cumleler2[j], StringComparison.OrdinalIgnoreCase))
                     {
-                        sayac++;
+                        counter++;
                         break;
                     }
                 }
             }
-            ck = ((sayac / buyuk) * 100);
+            ck = ((counter / buyuk) * 100);
 
 
             return ck;
@@ -486,8 +486,8 @@ namespace Benzerlik
             button5.Enabled = false;
             button4.Enabled = false;
             threShold = Convert.ToDouble(textBox5.Text);
-            gelen = textBox4.Text;
-            comboDeger = this.comboBox1.SelectedItem.ToString();
+            coming = textBox4.Text;
+            comboValue = this.comboBox1.SelectedItem.ToString();
             button2.Enabled = false;
 
         }
@@ -498,10 +498,10 @@ namespace Benzerlik
             button5.Enabled = false;
             flag2 = true;
             compID = textBox8.Text;
-            combo2Deger = comboBox2.SelectedItem.ToString();
+            combo2Value = comboBox2.SelectedItem.ToString();
             threShold = Convert.ToDouble(textBox7.Text);
-            gelen = textBox9.Text;
-            if (combo2Deger == "Product")
+            coming = textBox9.Text;
+            if (combo2Value == "Product")
             {
                 var recordQuery =
                    from kayit in Record.deliveryRecords
@@ -509,10 +509,10 @@ namespace Benzerlik
                    select kayit.Product;
 
                 foreach (var a in recordQuery)
-                    Filtre = a;
+                    Filter = a;
 
             }
-            if (combo2Deger == "Issue")
+            if (combo2Value == "Issue")
             {
                 var recordQuery =
                    from kayit in Record.deliveryRecords
@@ -520,10 +520,10 @@ namespace Benzerlik
                    select kayit.Issue;
 
                 foreach (var a in recordQuery)
-                    Filtre = a;
+                    Filter = a;
 
             }
-            if (combo2Deger == "Company")
+            if (combo2Value == "Company")
             {
                 var recordQuery =
                    from kayit in Record.deliveryRecords
@@ -531,7 +531,7 @@ namespace Benzerlik
                    select kayit.Company;
 
                 foreach (var a in recordQuery)
-                    Filtre = a;
+                    Filter = a;
 
             }
 
@@ -544,13 +544,13 @@ namespace Benzerlik
             flag3 = true;
             button4.Enabled = false;
             button2.Enabled = false;
-            productİsim = textBox13.Text;
+            productName = textBox13.Text;
             threShold = Convert.ToDouble(textBox11.Text);
-            gelen = textBox10.Text;
+            coming = textBox10.Text;
 
             var record2Query =
                      from kayit in Record.deliveryRecords
-                     where kayit.Product == productİsim
+                     where kayit.Product == productName
                      select kayit;
 
             foreach (var item in record2Query)
@@ -558,8 +558,8 @@ namespace Benzerlik
                 Record.deliveryRecords1.Add(item);
             }
 
-            satirSayisi = Record.deliveryRecords1.Count;
-            this.textBox1.Text = satirSayisi.ToString();
+            lineCount = Record.deliveryRecords1.Count;
+            this.textBox1.Text = lineCount.ToString();
 
             button5.Enabled = false;
 
